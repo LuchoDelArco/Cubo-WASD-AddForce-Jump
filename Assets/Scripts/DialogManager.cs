@@ -31,6 +31,7 @@ public class DialogManager : MonoBehaviour
 		//Al entrar activa la UI de diálogo
 		if (other.gameObject.CompareTag("NPC"))
 		{
+			frasesDialogo = other.gameObject.GetComponent<NpcBehaviour>().data.dialogueFrases;
 			if (!hasTalked)
 			{
 				textoDelDialogo.text = "Hola forastero";
@@ -63,7 +64,7 @@ public class DialogManager : MonoBehaviour
 
 			posicionFrase++;
 
-			if (posicionFrase == frasesDialogo.Length-1)
+			if (posicionFrase == frasesDialogo.Length)
 			{
 				textoBoton.text = "Cerrar";
 			}
@@ -71,6 +72,7 @@ public class DialogManager : MonoBehaviour
 		else
 		{
 			dialogueUI.SetActive(false);
+			hasTalked = true;
 		}
 
 	}
